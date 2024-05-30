@@ -1,0 +1,33 @@
+{
+    "name": "typescript",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "ISC",
+    "author": "c483481",
+    "scripts": {
+        "start": "node ./build/index.js",
+        "start:dev": "ts-node src/index.ts",
+        "build": "tsc -p .",
+        "lint": "npx eslint ./src --ext .ts",
+        "format": "npx prettier --write \"src/**/*.ts\"",
+        "test": "jest src/__test__",
+        "bench": "ts-node src/benchmark/index.bench.ts"
+    },
+    "devDependencies": {
+        "@types/glob": "^8.1.0",
+        "@types/jest": "^29.5.12",
+        "@types/node": "^20.12.12",
+        "@typescript-eslint/eslint-plugin": "^5.54.1",
+        "@typescript-eslint/parser": "^5.54.1",
+        "eslint": "^8.35.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-prettier": "^4.0.0",
+        "eslint-plugin-security": "^1.7.1",
+        "jest": "^29.7.0",
+        "prettier": "^2.8.8",
+        "tinybench": "^2.8.0",
+        "ts-jest": "^29.1.3",
+        "ts-node": "^10.9.2",
+        "typescript": "^4.9.5"
+    }
+}
