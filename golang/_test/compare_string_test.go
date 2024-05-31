@@ -1,9 +1,10 @@
 package _test
 
 import (
-	"github.com/stretchr/testify/require"
 	"str/utils"
 	"testing"
+
+	"github.com/stretchr/testify/require"
 )
 
 func TestCompareString(t *testing.T) {
@@ -51,6 +52,12 @@ func TestCompareString(t *testing.T) {
 			require.Equal(t, test.shouldBe, result)
 		})
 	}
+	for _, test := range tests {
+		t.Run(test.name + "safe compare string", func(t *testing.T) {
+			result := utils.SafeCompareString(test.str1, test.str2)
+			require.Equal(t, test.shouldBe, result)
+		})
+	}
 }
 
 func BenchmarkCompareString(b *testing.B) {
@@ -85,6 +92,13 @@ func BenchmarkCompareString(b *testing.B) {
 		b.Run(test.name, func(b *testing.B) {
 			for i := 0; i < b.N; i++ {
 				utils.CompareString(test.str1, test.str2)
+			}
+		})
+	}
+	for _, test := range tests {
+		b.Run(test.name + "safe compare string", func(b *testing.B) {
+			for i := 0; i < b.N; i++ {
+				utils.SafeCompareString(test.str1, test.str2)
 			}
 		})
 	}
