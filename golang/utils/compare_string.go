@@ -13,3 +13,16 @@ func CompareString(a, b string) bool {
 
 	return true
 }
+
+func SafeCompareString(a, b string) bool {
+	if len(a) != len(b) {
+		return false
+	}
+	lenA := len(a)
+	var result byte = 0
+	for i := 0; i < lenA; i++ {
+		result |= a[i] ^ b[i]
+	}
+
+	return result == 0
+}
