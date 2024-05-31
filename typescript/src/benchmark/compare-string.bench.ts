@@ -1,5 +1,5 @@
 import { Bench } from "tinybench";
-import { compareString } from "../utils/safe-compare-string";
+import { compareString, safeCompareString } from "../utils/compare-string";
 
 async function main() {
     const bench = new Bench({ time: 100 });
@@ -34,8 +34,14 @@ async function main() {
     ];
 
     successCases.map(({ str1, str2 }, index) => {
-        bench.add(`compare string 1 id: ${index + 1}`, () => {
+        bench.add(`compare string id: ${index + 1}`, () => {
             compareString(str1, str2);
+        });
+    });
+
+    successCases.map(({ str1, str2 }, index) => {
+        bench.add(`safe compare string id: ${index + 1}`, () => {
+            safeCompareString(str1, str2);
         });
     });
 
