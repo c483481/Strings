@@ -3,8 +3,10 @@ use criterion::{
     criterion_main
 };
 mod  convert_to_number;
+mod compare_string;
 
 use convert_to_number::convert_number_benchmark;
+use compare_string::compare_string_benchmark;
 
-criterion_group!(benches, convert_number_benchmark);
+criterion_group!(benches, convert_number_benchmark, compare_string_benchmark);
 criterion_main!(benches);
