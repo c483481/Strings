@@ -1,6 +1,6 @@
-import * as CompareString from "../utils/safe-compare-string";
+import * as CompareString from "../utils/compare-string";
 
-const { compareString } = jest.requireActual<typeof CompareString>("../utils/safe-compare-string.ts");
+const { compareString, safeCompareString } = jest.requireActual<typeof CompareString>("../utils/compare-string.ts");
 
 interface SuccessCaseCompareString {
     id: number;
@@ -65,6 +65,13 @@ const successCases: SuccessCaseCompareString[] = [
 describe("Test Compare String Fucntion", () => {
     it.each(successCases)("success case $id", ({ input, shouldBe }) => {
         const result = compareString(input.str1, input.str2);
+        expect(result).toEqual(shouldBe);
+    });
+});
+
+describe("Test Safe Compare String Fucntion", () => {
+    it.each(successCases)("success case $id", ({ input, shouldBe }) => {
+        const result = safeCompareString(input.str1, input.str2);
         expect(result).toEqual(shouldBe);
     });
 });
