@@ -1,5 +1,6 @@
 use criterion::Criterion;
-use rust::utils::compare_string::compare_string;
+use rust::utils::compare_string::{compare_string,safe_compare_string};
+
 
 struct TestCompareStruct {
     str1: String,
@@ -25,6 +26,13 @@ pub fn compare_string_benchmark(c: &mut Criterion) {
         c.bench_function(
             &format!("test compare string id: {}", index), 
             |b| b.iter(|| compare_string(&test.str1, &test.str2))
+        );
+    }
+
+    for (index, test) in tests.iter().enumerate() {
+        c.bench_function(
+            &format!("test safe compare string id: {}", index), 
+            |b| b.iter(|| safe_compare_string(&test.str1, &test.str2))
         );
     }
 }
