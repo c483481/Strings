@@ -9,3 +9,12 @@ static EMAIL_REGEX: Lazy<Regex> = Lazy::new(|| {
 pub fn is_email(email: &str) -> bool {
     EMAIL_REGEX.is_match(email)
 }
+
+pub fn simple_check_role(role: &str) -> &str {
+    match role {
+        "U" => "users",
+        "A" => "admin",
+        "SA" => "super admin",
+        _ => "unknown",
+    }
+}

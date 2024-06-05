@@ -7,7 +7,7 @@ use crate::utils::compare_string::{compare_string, safe_compare_string};
 
 use crate::utils::convert_to_number::convert_to_number;
 
-use crate::utils::check_string::is_email;
+use crate::utils::check_string::{is_email, simple_check_role};
 
 
 fn main() {
@@ -18,4 +18,5 @@ fn main() {
     println!("is email admin@gmail.com: {}", is_email("admin@gmail.com"));
     println!("is email asdf@adsf.adsf: {}", is_email("asdf@adsf.adsf"));
     println!("is email asdf@univ.ac.id: {}", is_email("asdf@univ.ac.id"));
+    println!("check simple role: {}", simple_check_role("U"))
 }
