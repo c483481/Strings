@@ -9,3 +9,16 @@ var re = regexp.MustCompile(`^[a-z0-9!#$%&'*+/=?^_` + "`" + `{|}~-]+(?:\.[a-z0-9
 func IsEmail(str string) bool {
 	return re.MatchString(str)
 }
+
+func SimpleCheckRole(role string) string {
+	switch role {
+	case "U":
+		return "users"
+	case "A":
+		return "admin"
+	case "SA":
+		return "super admin"
+	default:
+		return "unknown"
+	}
+}
