@@ -1,5 +1,5 @@
 use criterion::Criterion;
-use rust::utils::check_string::is_email;
+use rust::utils::check_string::{is_email, simple_check_role};
 
 pub fn check_is_email_benchmark(c: &mut Criterion) {
     let tests = vec![
@@ -16,3 +16,21 @@ pub fn check_is_email_benchmark(c: &mut Criterion) {
         );
     }
 }
+
+pub fn check_simple_role_benchmark(c: &mut Criterion) {
+    let tests = vec![
+            "U", 
+            "A",
+            "SA",
+            "u",
+            "MR"
+        ];
+
+    for (index, test) in tests.iter().enumerate() {
+        c.bench_function(
+            &format!("test check simple role id: {}", index), 
+            |b| b.iter(|| simple_check_role(&test))
+        );
+    }
+}
+
