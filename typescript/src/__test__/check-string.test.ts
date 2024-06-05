@@ -1,6 +1,6 @@
 import * as CompareString from "../utils/check-string";
 
-const { isEmail } = jest.requireActual<typeof CompareString>("../utils/check-string.ts");
+const { isEmail, simpleCheckRole } = jest.requireActual<typeof CompareString>("../utils/check-string.ts");
 
 interface SuccessCaseEmail {
     id: number;
@@ -35,5 +35,44 @@ describe("Test Check is Email Fucntion", () => {
     it.each(successCases)("success case $id", ({ input, shouldBe }) => {
         const result = isEmail(input);
         expect(result).toEqual(shouldBe);
+    });
+});
+
+const successCasesRole: {
+    id: number;
+    input: string;
+    shouldBe: string;
+}[] = [
+    {
+        id: 0,
+        input: "U",
+        shouldBe: "users",
+    },
+    {
+        id: 1,
+        input: "A",
+        shouldBe: "admin",
+    },
+    {
+        id: 2,
+        input: "SA",
+        shouldBe: "super admin",
+    },
+    {
+        id: 3,
+        input: "u",
+        shouldBe: "unkown",
+    },
+    {
+        id: 4,
+        input: "MN",
+        shouldBe: "unkown",
+    },
+];
+
+describe("Test simple check role Function", () => {
+    it.each(successCasesRole)("success case $id", ({ input, shouldBe }) => {
+        const result = simpleCheckRole(input);
+        expect(result).toBe(shouldBe);
     });
 });

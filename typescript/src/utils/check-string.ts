@@ -3,3 +3,16 @@ export function isEmail(str: string): boolean {
         str
     );
 }
+
+export function simpleCheckRole(role: string): string {
+    switch (role) {
+        case "U":
+            return "users";
+        case "A":
+            return "admin";
+        case "SA":
+            return "super admin";
+        default:
+            return "unkown";
+    }
+}
