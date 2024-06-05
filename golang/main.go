@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"str/utils"
+	"strings"
 )
 
 func main() {
@@ -14,4 +15,5 @@ func main() {
 	fmt.Printf("is email asdf@adsf.adsf: %t\n", utils.IsEmail("asdf@adsf.adsf"))
 	fmt.Printf("is email asdf@univ.ac.id: %t\n", utils.IsEmail("asdf@univ.ac.id"))
 	fmt.Printf("check simple role: %s\n", utils.SimpleCheckRole("U"))
+	fmt.Printf("result replace string \"The Quick Brown Fox\" : %s", strings.ReplaceAll("The Quick Brown Fox", " ", "-"))
 }
