@@ -9,6 +9,8 @@ use crate::utils::convert_to_number::convert_to_number;
 
 use crate::utils::check_string::{is_email, simple_check_role};
 
+use crate::utils::replace_string::replace_string;
+
 
 fn main() {
     println!("result convert from \"42\": {}", convert_to_number("42"));
@@ -18,5 +20,6 @@ fn main() {
     println!("is email admin@gmail.com: {}", is_email("admin@gmail.com"));
     println!("is email asdf@adsf.adsf: {}", is_email("asdf@adsf.adsf"));
     println!("is email asdf@univ.ac.id: {}", is_email("asdf@univ.ac.id"));
-    println!("check simple role: {}", simple_check_role("U"))
+    println!("check simple role: {}", simple_check_role("U"));
+    println!("result replace string \"The Quick Brown Fox\" : {}", replace_string("The Quick Brown Fox", " ", "-"));
 }
